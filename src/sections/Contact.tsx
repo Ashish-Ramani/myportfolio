@@ -20,9 +20,24 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:ramaniashish1999@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    alert('Opening your email client... Please send the message from there.');
+    
+    // Reset form after a short delay
+    setTimeout(() => {
+      setFormData({ name: '', email: '', message: '' });
+    }, 1000);
   };
 
   useLayoutEffect(() => {
@@ -58,15 +73,17 @@ const Contact = () => {
         );
       }
 
-      // Form fields
+      // Form fields - only animate if form exists
       if (formRef.current) {
         const fields = formRef.current.querySelectorAll('.form-field');
-        scrollTl.fromTo(
-          fields,
-          { x: 40, opacity: 0 },
-          { x: 0, opacity: 1, stagger: 0.025, ease: 'none' },
-          0.14
-        );
+        if (fields.length > 0) {
+          scrollTl.fromTo(
+            fields,
+            { x: 40, opacity: 0 },
+            { x: 0, opacity: 1, stagger: 0.025, ease: 'none' },
+            0.14
+          );
+        }
       }
 
       // EXIT (70-100%)
@@ -162,6 +179,8 @@ const Contact = () => {
             <div className="form-field">
               <input
                 type="text"
+                id="contact-name"
+                name="name"
                 placeholder="Your name"
                 value={formData.name}
                 onChange={(e) =>
@@ -169,12 +188,15 @@ const Contact = () => {
                 }
                 className="text-sm sm:text-base"
                 required
+                autoComplete="name"
               />
             </div>
 
             <div className="form-field">
               <input
                 type="email"
+                id="contact-email"
+                name="email"
                 placeholder="Your email"
                 value={formData.email}
                 onChange={(e) =>
@@ -182,18 +204,21 @@ const Contact = () => {
                 }
                 className="text-sm sm:text-base"
                 required
+                autoComplete="email"
               />
             </div>
 
             <div className="form-field">
               <textarea
+                id="contact-message"
+                name="message"
                 placeholder="What are you building?"
                 rows={4}
                 value={formData.message}
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="text-sm sm:text-base"
+                className="text-sm sm:text-base resize-none"
                 required
               />
             </div>
@@ -201,7 +226,8 @@ const Contact = () => {
             <div className="form-field">
               <button
                 type="submit"
-                className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-5 sm:px-6 py-2.5 sm:py-3"
+                className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-5 sm:px-6 py-2.5 sm:py-3 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!formData.name.trim() || !formData.email.trim() || !formData.message.trim()}
               >
                 <Send className="w-4 h-4" />
                 Send Message
