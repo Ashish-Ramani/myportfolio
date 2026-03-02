@@ -149,19 +149,20 @@ const Hero = () => {
       {/* Glass Card */}
       <div
         ref={cardRef}
-        className="relative z-10 glass rounded-[28px] p-8 md:p-12"
+        className="relative z-10 glass rounded-[20px] md:rounded-[28px] p-6 sm:p-8 md:p-10 lg:p-12 mx-4 sm:mx-6 md:mx-auto"
         style={{
-          width: 'min(86vw, 1100px)',
-          minHeight: 'min(52vh, 520px)',
+          width: 'min(92vw, 1100px)',
+          minHeight: 'min(50vh, 480px)',
+          maxHeight: '90vh',
           opacity: 0,
         }}
       >
         {/* Content */}
-        <div className="h-full flex flex-col justify-between">
+        <div className="h-full flex flex-col justify-between gap-4 sm:gap-6">
           {/* Headline */}
           <h1
             ref={headlineRef}
-            className="font-heading text-5xl md:text-7xl lg:text-8xl font-semibold text-[#F2F5F9] tracking-tight leading-none"
+            className="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-[#F2F5F9] tracking-tight leading-none"
           >
             <span className="word inline-block">Ashish</span>{' '}
             <span className="word inline-block">Ramani</span>
@@ -170,7 +171,7 @@ const Hero = () => {
           {/* Subheadline */}
           <p
             ref={subheadlineRef}
-            className="mt-6 text-lg md:text-xl text-[#A9B3C2] max-w-[70%] leading-relaxed"
+            className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg lg:text-xl text-[#A9B3C2] max-w-full sm:max-w-[85%] md:max-w-[70%] leading-relaxed"
             style={{ opacity: 0 }}
           >
             Data Engineer with 4+ years of experience designing scalable data pipelines,
@@ -180,12 +181,12 @@ const Hero = () => {
           </p>
 
           {/* CTAs */}
-          <div ref={ctaRef} className="mt-10 flex flex-wrap gap-4">
-            <button onClick={scrollToProjects} className="btn-primary flex items-center gap-2">
+          <div ref={ctaRef} className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+            <button onClick={scrollToProjects} className="btn-primary flex items-center justify-center gap-2 text-sm sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
               View Projects
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button onClick={scrollToContact} className="btn-secondary flex items-center gap-2">
+            <button onClick={scrollToContact} className="btn-secondary flex items-center justify-center gap-2 text-sm sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
               <Mail className="w-4 h-4" />
               Contact Me
             </button>
@@ -194,16 +195,16 @@ const Hero = () => {
       </div>
 
       {/* Top Navigation (visible on hero) */}
-      <div className="absolute top-6 left-0 right-0 z-20 px-[4vw]">
+      <div className="absolute top-4 sm:top-6 left-0 right-0 z-20 px-4 sm:px-6 md:px-[4vw]">
         <div className="flex items-center justify-between">
-          <span className="font-heading text-xl font-bold text-[#F2F5F9]">
+          <span className="font-heading text-lg sm:text-xl font-bold text-[#F2F5F9]">
             AR
           </span>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-3 sm:gap-6 md:gap-8">
             {['Work', 'Skills', 'About', 'Contact'].map((item) => (
               <span
                 key={item}
-                className="font-mono text-xs uppercase tracking-[0.14em] text-[#A9B3C2] hover:text-[#F2F5F9] transition-colors cursor-pointer"
+                className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.14em] text-[#A9B3C2] hover:text-[#F2F5F9] transition-colors cursor-pointer"
               >
                 {item}
               </span>

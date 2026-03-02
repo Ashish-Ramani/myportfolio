@@ -145,10 +145,10 @@ const Experience = () => {
         />
       </div>
 
-      {/* Left Image Card */}
+      {/* Left Image Card - Hidden on mobile, visible on tablet+ */}
       <div
         ref={imageCardRef}
-        className="absolute z-10 overflow-hidden rounded-[28px]"
+        className="hidden md:block absolute z-10 overflow-hidden rounded-[20px] lg:rounded-[28px]"
         style={{
           left: '5vw',
           top: '14vh',
@@ -164,52 +164,46 @@ const Experience = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#07080A]/30" />
       </div>
 
-      {/* Right Glass Panel */}
+      {/* Glass Panel - Full width on mobile, half on desktop */}
       <div
         ref={panelRef}
-        className="absolute z-10 glass rounded-[28px] p-8 md:p-10"
-        style={{
-          right: '5vw',
-          top: '14vh',
-          width: '44vw',
-          height: '72vh',
-        }}
+        className="absolute z-10 glass rounded-[20px] md:rounded-[28px] p-6 sm:p-8 md:p-6 lg:p-8 xl:p-10 mx-4 sm:mx-6 md:mx-0 md:right-[5vw] md:top-[14vh] w-[calc(100%-2rem)] md:w-[44vw] md:h-[72vh] max-h-[90vh]"
       >
-        <div className="h-full flex flex-col">
+        <div className="h-full flex flex-col overflow-hidden">
           {/* Header */}
-          <div ref={headerRef} className="mb-8">
-            <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#00D4AA] block mb-3">
+          <div ref={headerRef} className="mb-6 md:mb-8 shrink-0">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.14em] text-[#00D4AA] block mb-2 md:mb-3">
               Experience
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-[#F2F5F9]">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-semibold text-[#F2F5F9]">
               Career Timeline
             </h2>
           </div>
 
           {/* Timeline */}
-          <div className="flex-1 flex flex-col justify-center">
-            <div className="space-y-8">
+          <div className="flex-1 flex flex-col justify-center overflow-y-auto pr-1">
+            <div className="space-y-6 md:space-y-7 lg:space-y-8">
               {experiences.map((exp) => (
                 <div
                   key={exp.role}
                   ref={addToTimelineRefs}
-                  className="relative pl-6"
+                  className="relative pl-5 md:pl-6"
                 >
                   {/* Timeline dot */}
                   <div className="absolute left-0 top-1.5 timeline-dot" />
 
                   {/* Content */}
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3 md:gap-4">
                     <div className="flex-1">
-                      <h3 className="font-heading text-lg font-semibold text-[#F2F5F9]">
+                      <h3 className="font-heading text-base sm:text-lg font-semibold text-[#F2F5F9]">
                         {exp.role}
                       </h3>
-                      <p className="text-[#A9B3C2] text-sm">{exp.company}</p>
-                      <p className="text-[#A9B3C2]/70 text-sm mt-2 leading-relaxed">
+                      <p className="text-[#A9B3C2] text-xs sm:text-sm">{exp.company}</p>
+                      <p className="text-[#A9B3C2]/70 text-xs sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">
                         {exp.description}
                       </p>
                     </div>
-                    <span className="font-mono text-xs text-[#00D4AA] shrink-0">
+                    <span className="font-mono text-[10px] sm:text-xs text-[#00D4AA] shrink-0 mt-1 sm:mt-0">
                       {exp.period}
                     </span>
                   </div>

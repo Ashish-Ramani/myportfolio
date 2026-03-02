@@ -124,17 +124,16 @@ const Projects = () => {
       {/* Counter */}
       <div
         ref={counterRef}
-        className="absolute z-20 flex items-center gap-3"
-        style={{ left: '6vw', top: '9vh' }}
+        className="absolute z-20 flex items-center gap-2 sm:gap-3 left-4 sm:left-6 md:left-[6vw] top-4 sm:top-6 md:top-[9vh]"
       >
         <div className="w-2 h-2 rounded-full bg-[#00D4AA]" />
-        <span className="font-mono text-sm text-[#A9B3C2]">01</span>
+        <span className="font-mono text-xs sm:text-sm text-[#A9B3C2]">01</span>
       </div>
 
-      {/* Left Image Panel */}
+      {/* Left Image Panel - Hidden on mobile, visible on tablet+ */}
       <div
         ref={imagePanelRef}
-        className="absolute z-10 overflow-hidden rounded-[28px]"
+        className="hidden md:block absolute z-10 overflow-hidden rounded-[20px] lg:rounded-[28px]"
         style={{
           left: '5vw',
           top: '14vh',
@@ -150,35 +149,24 @@ const Projects = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#07080A]/60 to-transparent" />
       </div>
 
-      {/* Right Glass Card */}
+      {/* Glass Card - Responsive positioning */}
       <div
         ref={cardRef}
-        className="absolute z-10 glass rounded-[28px] p-8 md:p-10"
-        style={{
-          right: '5vw',
-          top: '14vh',
-          width: '32vw',
-          height: '72vh',
-        }}
+        className="absolute z-10 glass rounded-[20px] sm:rounded-[24px] md:rounded-[28px] p-6 sm:p-8 md:p-6 lg:p-8 xl:p-10 mx-4 sm:mx-6 md:mx-0 md:right-[5vw] md:top-[14vh] w-[calc(100%-2rem)] md:w-[32vw] md:h-[72vh] max-h-[90vh]"
       >
-        <div className="h-full flex flex-col">
-          {/* Label */}
-          <div ref={addToTextRefs} className="mb-4">
-            <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#00D4AA]">
+        <div className="h-full flex flex-col overflow-hidden">
+          <div ref={addToTextRefs} className="mb-3 sm:mb-4 md:mb-3 lg:mb-4 shrink-0">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.14em] text-[#00D4AA]">
               Featured Project
             </span>
           </div>
-
-          {/* Title */}
-          <div ref={addToTextRefs} className="mb-6">
-            <h2 className="font-heading text-2xl md:text-3xl font-semibold text-[#F2F5F9] leading-tight">
+          <div ref={addToTextRefs} className="mb-4 sm:mb-5 md:mb-4 lg:mb-6 shrink-0">
+            <h2 className="font-heading text-xl sm:text-2xl md:text-xl lg:text-2xl xl:text-3xl font-semibold text-[#F2F5F9] leading-tight">
               Malicious Website Detection Using ML
             </h2>
           </div>
-
-          {/* Body */}
-          <div ref={addToTextRefs} className="flex-1">
-            <p className="text-[#A9B3C2] leading-relaxed">
+          <div ref={addToTextRefs} className="flex-1 overflow-y-auto pr-1 md:pr-2">
+            <p className="text-sm sm:text-base md:text-sm lg:text-base text-[#A9B3C2] leading-relaxed">
               Engineered a machine learning pipeline to classify malicious URLs
               (phishing, malware, defacement, benign) using Random Forest, XGBoost,
               and LightGBM models trained on 651,000+ URLs. Extracted and engineered
@@ -186,25 +174,21 @@ const Projects = () => {
               and directory depth for high-accuracy threat detection.
             </p>
           </div>
-
-          {/* Tags */}
-          <div ref={addToTextRefs} className="mb-6">
+          <div ref={addToTextRefs} className="mb-4 sm:mb-5 md:mb-4 lg:mb-6 mt-4 shrink-0">
             <div className="flex flex-wrap gap-2">
               {['Python', 'Machine Learning', 'Random Forest', 'XGBoost', 'LightGBM'].map(
                 (tag) => (
-                  <span key={tag} className="tag">
+                  <span key={tag} className="tag text-[10px] sm:text-xs md:text-xs px-2 py-1">
                     {tag}
                   </span>
                 )
               )}
             </div>
           </div>
-
-          {/* Link */}
-          <div ref={addToTextRefs}>
+          <div ref={addToTextRefs} className="shrink-0">
             <a
               href="#"
-              className="inline-flex items-center gap-2 text-[#00D4AA] font-medium link-underline"
+              className="inline-flex items-center gap-2 text-sm sm:text-base md:text-sm lg:text-base text-[#00D4AA] font-medium link-underline"
             >
               Read case study
               <ArrowUpRight className="w-4 h-4" />

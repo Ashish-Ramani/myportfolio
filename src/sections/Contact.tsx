@@ -106,46 +106,47 @@ const Contact = () => {
       {/* Center Glass Card */}
       <div
         ref={cardRef}
-        className="relative z-10 glass rounded-[28px] p-8 md:p-12"
+        className="relative z-10 glass rounded-[20px] sm:rounded-[24px] md:rounded-[28px] p-6 sm:p-8 md:p-10 lg:p-12 mx-4 sm:mx-6 md:mx-auto"
         style={{
-          width: 'min(86vw, 1080px)',
-          minHeight: 'min(60vh, 560px)',
+          width: 'min(92vw, 1080px)',
+          minHeight: 'min(50vh, 480px)',
+          maxHeight: '90vh',
         }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16">
           {/* Left Content */}
           <div ref={leftContentRef} className="flex flex-col justify-center">
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-[#F2F5F9] leading-tight mb-6">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#F2F5F9] leading-tight mb-4 sm:mb-6">
               Let's Build Something Reliable
             </h2>
 
-            <p className="text-[#A9B3C2] leading-relaxed mb-8">
+            <p className="text-sm sm:text-base text-[#A9B3C2] leading-relaxed mb-6 sm:mb-8">
               Open to full-time, contract, and advisory roles. Let's discuss how
               I can help transform your data infrastructure.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#00D4AA]/10 flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-[#00D4AA]" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#00D4AA]/10 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#00D4AA]" />
                 </div>
-                <span className="text-[#F2F5F9]">ramaniashish1999@gmail.com</span>
+                <span className="text-sm sm:text-base text-[#F2F5F9] break-all">ramaniashish1999@gmail.com</span>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#00D4AA]/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-[#00D4AA]" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#00D4AA]/10 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#00D4AA]" />
                 </div>
-                <span className="text-[#A9B3C2]">
+                <span className="text-sm sm:text-base text-[#A9B3C2]">
                   Dallas, Texas — Open to relocation
                 </span>
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#00D4AA]/10 flex items-center justify-center">
-                  <Briefcase className="w-5 h-5 text-[#00D4AA]" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#00D4AA]/10 flex items-center justify-center shrink-0">
+                  <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-[#00D4AA]" />
                 </div>
-                <span className="text-[#A9B3C2]">
+                <span className="text-sm sm:text-base text-[#A9B3C2]">
                   Currently at WeTechForU
                 </span>
               </div>
@@ -156,7 +157,7 @@ const Contact = () => {
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="flex flex-col justify-center space-y-4"
+            className="flex flex-col justify-center space-y-3 sm:space-y-4"
           >
             <div className="form-field">
               <input
@@ -166,6 +167,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
+                className="text-sm sm:text-base"
                 required
               />
             </div>
@@ -178,6 +180,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
+                className="text-sm sm:text-base"
                 required
               />
             </div>
@@ -190,6 +193,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
+                className="text-sm sm:text-base"
                 required
               />
             </div>
@@ -197,7 +201,7 @@ const Contact = () => {
             <div className="form-field">
               <button
                 type="submit"
-                className="btn-primary w-full flex items-center justify-center gap-2"
+                className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base px-5 sm:px-6 py-2.5 sm:py-3"
               >
                 <Send className="w-4 h-4" />
                 Send Message
