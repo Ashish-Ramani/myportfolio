@@ -170,7 +170,7 @@ const Skills = () => {
       {/* Right Glass Panel */}
       <div
         ref={panelRef}
-        className="absolute z-10 glass rounded-[28px] p-8 md:p-10"
+        className="absolute z-10 glass rounded-[28px] p-6 md:p-8 lg:p-10"
         style={{
           right: '5vw',
           top: '14vh',
@@ -178,30 +178,30 @@ const Skills = () => {
           height: '72vh',
         }}
       >
-        <div className="h-full flex flex-col">
+        <div className="h-full flex flex-col overflow-hidden">
           {/* Header */}
-          <div ref={headerRef} className="mb-8">
-            <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#00D4AA] block mb-3">
+          <div ref={headerRef} className="mb-6 shrink-0">
+            <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#00D4AA] block mb-2">
               Skills & Tools
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-[#F2F5F9]">
+            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-semibold text-[#F2F5F9]">
               The Stack
             </h2>
           </div>
 
           {/* Skills Grid */}
-          <div className="flex-1 flex flex-col justify-center">
-            <div className="space-y-6">
+          <div className="flex-1 flex flex-col justify-center overflow-y-auto pr-1">
+            <div className="space-y-3 md:space-y-4">
               {skills.map((skill) => (
                 <div
                   key={skill.category}
                   ref={addToSkillRefs}
-                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 pb-4 border-b border-[rgba(242,245,249,0.08)]"
+                  className="flex flex-col sm:flex-row sm:items-start gap-1.5 sm:gap-3 md:gap-4 pb-3 md:pb-3.5 border-b border-[rgba(242,245,249,0.08)] last:border-0"
                 >
-                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#A9B3C2] w-40 shrink-0">
+                  <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.12em] text-[#A9B3C2] sm:w-32 md:w-36 lg:w-40 shrink-0 leading-snug pt-0.5">
                     {skill.category}
                   </span>
-                  <span className="text-[#F2F5F9] font-medium">
+                  <span className="text-[#F2F5F9] font-medium text-xs sm:text-sm md:text-[15px] leading-relaxed flex-1 break-words">
                     {skill.items}
                   </span>
                 </div>
