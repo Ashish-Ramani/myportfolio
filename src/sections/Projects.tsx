@@ -145,6 +145,8 @@ const Projects = () => {
           src={`${import.meta.env.BASE_URL}project_01_pipeline.jpg`}
           alt="Data Pipeline Architecture"
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#07080A]/60 to-transparent" />
       </div>

@@ -110,6 +110,8 @@ const Footer = () => {
             src={`${import.meta.env.BASE_URL}footer_bridge.jpg`}
             alt="Bridge at Night"
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#07080A] via-transparent to-transparent" />
         </div>

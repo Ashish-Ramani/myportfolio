@@ -110,6 +110,8 @@ const Contact = () => {
           src={`${import.meta.env.BASE_URL}contact_city_street.jpg`}
           alt="City Street at Night"
           className="bg-image"
+          loading="lazy"
+          decoding="async"
         />
         <div
           className="absolute inset-0"

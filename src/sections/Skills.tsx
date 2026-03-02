@@ -163,6 +163,8 @@ const Skills = () => {
           src={`${import.meta.env.BASE_URL}skills_code_editor.jpg`}
           alt="Code Editor"
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#07080A]/30" />
       </div>

@@ -12,4 +12,30 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Optimize build
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'gsap': ['gsap'],
+          'react-vendor': ['react', 'react-dom'],
+        },
+      },
+    },
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000,
+  },
+  // Optimize dev server
+  server: {
+    hmr: {
+      overlay: false,
+    },
+  },
 });

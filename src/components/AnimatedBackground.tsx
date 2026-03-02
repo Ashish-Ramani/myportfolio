@@ -14,21 +14,22 @@ const AnimatedBackground = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Create bright floating particles
-    const particleCount = 50;
+    // Reduced particle count for performance
+    const particleCount = 20;
     const particles: HTMLDivElement[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
       particle.className = 'animated-particle';
       
-      const size = Math.random() * 6 + 3;
+      const size = Math.random() * 4 + 2;
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.top = `${Math.random() * 100}%`;
-      particle.style.opacity = `${Math.random() * 0.6 + 0.4}`;
-      particle.style.boxShadow = `0 0 ${size * 3}px rgba(0, 212, 170, 0.8), 0 0 ${size * 6}px rgba(0, 212, 170, 0.4)`;
+      particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+      // Reduced box shadow for performance
+      particle.style.boxShadow = `0 0 ${size * 2}px rgba(0, 212, 170, 0.6)`;
       
       containerRef.current.appendChild(particle);
       particles.push(particle);
@@ -36,63 +37,50 @@ const AnimatedBackground = () => {
 
     particlesRef.current = particles;
 
-    // Animate particles with GSAP
+    // Optimized animations using transform (GPU accelerated)
     particles.forEach((particle) => {
-      const duration = Math.random() * 20 + 15;
+      const duration = Math.random() * 25 + 20;
       const delay = Math.random() * 2;
+      const moveY = Math.random() * 400 + 300;
+      const moveX = (Math.random() - 0.5) * 200;
       
       gsap.to(particle, {
-        y: `+=${Math.random() * 400 + 300}`,
-        x: `+=${(Math.random() - 0.5) * 200}`,
-        rotation: Math.random() * 720,
-        opacity: `+=${Math.random() * 0.3 - 0.15}`,
-        scale: Math.random() * 0.5 + 0.8,
+        transform: `translate(${moveX}px, ${moveY}px) rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.3 + 0.9})`,
+        opacity: Math.random() * 0.4 + 0.3,
         duration: duration,
         delay: delay,
         repeat: -1,
-        ease: 'power1.inOut',
+        ease: 'none',
+        force3D: true, // Force GPU acceleration
       });
     });
 
-    // Create bright 3D geometric shapes
-    const shapeCount = 12;
+    // Reduced shape count
+    const shapeCount = 6;
     const shapes: HTMLDivElement[] = [];
 
     for (let i = 0; i < shapeCount; i++) {
       const shape = document.createElement('div');
       shape.className = 'animated-shape';
       
-      const size = Math.random() * 120 + 60;
+      const size = Math.random() * 80 + 50;
       shape.style.width = `${size}px`;
       shape.style.height = `${size}px`;
       shape.style.left = `${Math.random() * 100}%`;
       shape.style.top = `${Math.random() * 100}%`;
-      shape.style.opacity = `${Math.random() * 0.3 + 0.2}`;
+      shape.style.opacity = `${Math.random() * 0.25 + 0.15}`;
       
-      // Random shape type with brighter colors
-      const shapeType = Math.floor(Math.random() * 4);
+      // Simplified shapes for performance
+      const shapeType = Math.floor(Math.random() * 2);
       if (shapeType === 0) {
         shape.style.borderRadius = '50%';
-        shape.style.background = 'linear-gradient(135deg, rgba(0, 212, 170, 0.4), rgba(0, 212, 170, 0.2))';
-        shape.style.border = '2px solid rgba(0, 212, 170, 0.5)';
-        shape.style.boxShadow = `0 0 ${size}px rgba(0, 212, 170, 0.6), inset 0 0 ${size/2}px rgba(0, 212, 170, 0.3)`;
-      } else if (shapeType === 1) {
-        shape.style.borderRadius = '20%';
-        shape.style.background = 'linear-gradient(45deg, rgba(0, 212, 170, 0.35), rgba(0, 212, 170, 0.15))';
-        shape.style.border = '2px solid rgba(0, 212, 170, 0.5)';
-        shape.style.transform = 'rotate(45deg)';
-        shape.style.boxShadow = `0 0 ${size}px rgba(0, 212, 170, 0.5)`;
-      } else if (shapeType === 2) {
-        shape.style.borderRadius = '0%';
-        shape.style.background = 'linear-gradient(90deg, rgba(0, 212, 170, 0.4), transparent)';
-        shape.style.border = '2px solid rgba(0, 212, 170, 0.6)';
-        shape.style.transform = 'rotate(30deg)';
-        shape.style.boxShadow = `0 0 ${size}px rgba(0, 212, 170, 0.5)`;
+        shape.style.background = 'rgba(0, 212, 170, 0.3)';
+        shape.style.border = '1px solid rgba(0, 212, 170, 0.4)';
       } else {
-        shape.style.borderRadius = '10%';
-        shape.style.background = 'radial-gradient(circle, rgba(0, 212, 170, 0.4), rgba(0, 212, 170, 0.1))';
-        shape.style.border = '2px solid rgba(0, 212, 170, 0.5)';
-        shape.style.boxShadow = `0 0 ${size}px rgba(0, 212, 170, 0.6)`;
+        shape.style.borderRadius = '20%';
+        shape.style.background = 'rgba(0, 212, 170, 0.25)';
+        shape.style.border = '1px solid rgba(0, 212, 170, 0.4)';
+        shape.style.transform = 'rotate(45deg)';
       }
       
       containerRef.current.appendChild(shape);
@@ -101,48 +89,44 @@ const AnimatedBackground = () => {
 
     shapesRef.current = shapes;
 
-    // Animate shapes with 3D rotation
+    // Optimized shape animations
     shapes.forEach((shape) => {
-      const duration = Math.random() * 25 + 20;
+      const duration = Math.random() * 30 + 25;
       const delay = Math.random() * 3;
+      const moveY = Math.random() * 500 + 400;
+      const moveX = (Math.random() - 0.5) * 300;
+      const rotation = Math.random() * 720 + 360;
       
       gsap.to(shape, {
-        y: `+=${Math.random() * 500 + 400}`,
-        x: `+=${(Math.random() - 0.5) * 300}`,
-        rotation: `+=${Math.random() * 720 + 360}`,
-        scale: Math.random() * 0.6 + 0.7,
-        opacity: `+=${Math.random() * 0.2 - 0.1}`,
+        transform: `translate(${moveX}px, ${moveY}px) rotate(${rotation}deg) scale(${Math.random() * 0.4 + 0.8})`,
+        opacity: Math.random() * 0.2 + 0.15,
         duration: duration,
         delay: delay,
         repeat: -1,
-        ease: 'power1.inOut',
+        ease: 'none',
+        force3D: true,
       });
     });
 
-    // Create bright 3D cubes
-    const cubeCount = 6;
+    // Reduced cube count
+    const cubeCount = 3;
     const cubes: HTMLDivElement[] = [];
 
     for (let i = 0; i < cubeCount; i++) {
       const cube = document.createElement('div');
       cube.className = 'animated-cube';
       
-      const size = Math.random() * 100 + 80;
+      const size = Math.random() * 60 + 50;
       cube.style.width = `${size}px`;
       cube.style.height = `${size}px`;
       cube.style.left = `${Math.random() * 100}%`;
       cube.style.top = `${Math.random() * 100}%`;
-      cube.style.opacity = `${Math.random() * 0.4 + 0.3}`;
-      cube.style.background = `linear-gradient(135deg, rgba(0, 212, 170, 0.5), rgba(0, 212, 170, 0.2))`;
-      cube.style.border = `3px solid rgba(0, 212, 170, 0.7)`;
+      cube.style.opacity = `${Math.random() * 0.3 + 0.2}`;
+      cube.style.background = `rgba(0, 212, 170, 0.4)`;
+      cube.style.border = `2px solid rgba(0, 212, 170, 0.6)`;
       cube.style.borderRadius = '8px';
-      cube.style.transform = 'rotateX(45deg) rotateY(45deg)';
-      cube.style.transformStyle = 'preserve-3d';
-      cube.style.boxShadow = `
-        0 0 ${size}px rgba(0, 212, 170, 0.8),
-        inset 0 0 ${size/2}px rgba(0, 212, 170, 0.3),
-        0 0 ${size * 2}px rgba(0, 212, 170, 0.4)
-      `;
+      // Simplified transform
+      cube.style.transform = 'rotate(45deg)';
       
       containerRef.current.appendChild(cube);
       cubes.push(cube);
@@ -150,42 +134,40 @@ const AnimatedBackground = () => {
 
     cubesRef.current = cubes;
 
-    // Animate cubes with 3D rotation
+    // Optimized cube animations
     cubes.forEach((cube) => {
-      const duration = Math.random() * 20 + 15;
+      const duration = Math.random() * 25 + 20;
       const delay = Math.random() * 2;
+      const moveY = Math.random() * 600 + 500;
+      const moveX = (Math.random() - 0.5) * 400;
       
       gsap.to(cube, {
-        rotationX: `+=${360}`,
-        rotationY: `+=${360}`,
-        rotationZ: `+=${180}`,
-        y: `+=${Math.random() * 600 + 500}`,
-        x: `+=${(Math.random() - 0.5) * 400}`,
-        scale: Math.random() * 0.5 + 0.8,
-        opacity: `+=${Math.random() * 0.2 - 0.1}`,
+        transform: `translate(${moveX}px, ${moveY}px) rotate(${360}deg) scale(${Math.random() * 0.4 + 0.8})`,
+        opacity: Math.random() * 0.2 + 0.2,
         duration: duration,
         delay: delay,
         repeat: -1,
-        ease: 'power1.inOut',
+        ease: 'none',
+        force3D: true,
       });
     });
 
-    // Scroll-triggered animation for mesh
+    // Optimized scroll-triggered animation
     if (meshRef.current) {
+      let rafId: number;
       ScrollTrigger.create({
         trigger: 'body',
         start: 'top top',
         end: 'bottom bottom',
         onUpdate: (self) => {
-          const progress = self.progress;
-          if (meshRef.current) {
-            gsap.to(meshRef.current, {
-              rotation: progress * 360,
-              scale: 1 + progress * 0.3,
-              duration: 0.3,
-              ease: 'power1.out',
-            });
-          }
+          // Use requestAnimationFrame for smoother updates
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(() => {
+            const progress = self.progress;
+            if (meshRef.current) {
+              meshRef.current.style.transform = `rotate(${progress * 360}deg) scale(${1 + progress * 0.2})`;
+            }
+          });
         },
       });
     }
@@ -205,57 +187,34 @@ const AnimatedBackground = () => {
       ref={containerRef}
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
     >
-      {/* Brighter animated gradient orbs with scroll effect */}
+      {/* Optimized gradient orbs - reduced blur and count */}
       <div 
         ref={meshRef}
-        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-[#00D4AA]/25 blur-[120px] transition-transform duration-1000"
-        style={{ boxShadow: '0 0 200px rgba(0, 212, 170, 0.5)' }}
+        className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-[#00D4AA]/20"
+        style={{ 
+          filter: 'blur(60px)',
+          willChange: 'transform',
+          transform: 'translateZ(0)', // Force GPU acceleration
+        }}
       />
       <div 
-        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#00D4AA]/20 blur-[100px] animate-pulse" 
-        style={{ animationDelay: '1s', boxShadow: '0 0 150px rgba(0, 212, 170, 0.4)' }} 
+        className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] rounded-full bg-[#00D4AA]/15"
+        style={{ 
+          filter: 'blur(50px)',
+          animation: 'pulse 4s ease-in-out infinite',
+          animationDelay: '1s',
+        }} 
       />
       <div 
-        className="absolute top-1/2 right-1/3 w-[400px] h-[400px] rounded-full bg-[#00D4AA]/22 blur-[80px] animate-pulse" 
-        style={{ animationDelay: '2s', boxShadow: '0 0 120px rgba(0, 212, 170, 0.4)' }} 
-      />
-      <div 
-        className="absolute bottom-1/3 left-1/3 w-[450px] h-[450px] rounded-full bg-[#00D4AA]/18 blur-[90px] animate-pulse" 
-        style={{ animationDelay: '1.5s', boxShadow: '0 0 130px rgba(0, 212, 170, 0.4)' }} 
-      />
-      <div 
-        className="absolute top-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-[#00D4AA]/20 blur-[70px] animate-pulse" 
-        style={{ animationDelay: '0.5s', boxShadow: '0 0 100px rgba(0, 212, 170, 0.4)' }} 
+        className="absolute top-1/2 right-1/3 w-[300px] h-[300px] rounded-full bg-[#00D4AA]/18"
+        style={{ 
+          filter: 'blur(40px)',
+          animation: 'pulse 5s ease-in-out infinite',
+          animationDelay: '2s',
+        }} 
       />
       
-      {/* Brighter mesh grid pattern */}
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: `
-          linear-gradient(rgba(0, 212, 170, 0.3) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 212, 170, 0.3) 1px, transparent 1px)
-        `,
-        backgroundSize: '60px 60px',
-      }} />
-      
-      {/* Animated lines */}
-      <div className="absolute inset-0">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="animated-line"
-            style={{
-              position: 'absolute',
-              width: '2px',
-              height: '100%',
-              background: `linear-gradient(to bottom, transparent, rgba(0, 212, 170, 0.4), transparent)`,
-              left: `${20 + i * 20}%`,
-              opacity: 0.3,
-              animation: `lineMove ${10 + i * 2}s linear infinite`,
-              animationDelay: `${i * 1.5}s`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Simplified mesh grid - removed for performance */}
     </div>
   );
 };

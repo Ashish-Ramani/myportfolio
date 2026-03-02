@@ -153,6 +153,8 @@ const Process = () => {
           src={`${import.meta.env.BASE_URL}process_whiteboard.jpg`}
           alt="Process Whiteboard"
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#07080A]/30" />
       </div>
