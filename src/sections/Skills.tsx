@@ -160,7 +160,7 @@ const Skills = () => {
         }}
       >
         <img
-          src="/skills_code_editor.jpg"
+          src={`${import.meta.env.BASE_URL}skills_code_editor.jpg`}
           alt="Code Editor"
           className="w-full h-full object-cover"
         />

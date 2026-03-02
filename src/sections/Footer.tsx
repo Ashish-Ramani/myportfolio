@@ -107,7 +107,7 @@ const Footer = () => {
           style={{ height: 'min(40vh, 400px)' }}
         >
           <img
-            src="/footer_bridge.jpg"
+            src={`${import.meta.env.BASE_URL}footer_bridge.jpg`}
             alt="Bridge at Night"
             className="w-full h-full object-cover"
           />

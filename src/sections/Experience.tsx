@@ -157,7 +157,7 @@ const Experience = () => {
         }}
       >
         <img
-          src="/experience_office_night.jpg"
+          src={`${import.meta.env.BASE_URL}experience_office_night.jpg`}
           alt="Office at Night"
           className="w-full h-full object-cover"
         />

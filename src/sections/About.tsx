@@ -123,7 +123,7 @@ const About = () => {
         }}
       >
         <img
-          src="/about_workspace.jpg"
+          src={`${import.meta.env.BASE_URL}about_workspace.jpg`}
           alt="Workspace"
           className="w-full h-full object-cover"
         />

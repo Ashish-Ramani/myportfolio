@@ -132,7 +132,7 @@ const Hero = () => {
         style={{ opacity: 0 }}
       >
         <img
-          src="/hero_bg_city.jpg"
+          src={`${import.meta.env.BASE_URL}hero_bg_city.jpg`}
           alt="Night city skyline"
           className="bg-image"
         />

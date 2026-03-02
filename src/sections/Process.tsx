@@ -150,7 +150,7 @@ const Process = () => {
         }}
       >
         <img
-          src="/process_whiteboard.jpg"
+          src={`${import.meta.env.BASE_URL}process_whiteboard.jpg`}
           alt="Process Whiteboard"
           className="w-full h-full object-cover"
         />

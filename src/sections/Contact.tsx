@@ -90,7 +90,7 @@ const Contact = () => {
       {/* Background Image */}
       <div ref={bgRef} className="absolute inset-0 z-0">
         <img
-          src="/contact_city_street.jpg"
+          src={`${import.meta.env.BASE_URL}contact_city_street.jpg`}
           alt="City Street at Night"
           className="bg-image"
         />

@@ -143,7 +143,7 @@ const Projects = () => {
         }}
       >
         <img
-          src="/project_01_pipeline.jpg"
+          src={`${import.meta.env.BASE_URL}project_01_pipeline.jpg`}
           alt="Data Pipeline Architecture"
           className="w-full h-full object-cover"
         />
