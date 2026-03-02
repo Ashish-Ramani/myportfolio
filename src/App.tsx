@@ -10,6 +10,7 @@ import Process from './sections/Process';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 import Navigation from './components/Navigation';
+import AnimatedBackground from './components/AnimatedBackground';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,6 +72,9 @@ function App() {
 
   return (
     <div ref={mainRef} className="relative bg-[#07080A]">
+      {/* Animated 3D Background */}
+      <AnimatedBackground />
+      
       {/* Grain overlay */}
       <div className="grain" />
       

@@ -90,6 +90,23 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
+/* Animated background particles */
+.animated-particle {
+  position: absolute;
+  background: #00D4AA;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
+  will-change: transform, opacity;
+}
+
+/* Animated background shapes */
+.animated-shape {
+  position: absolute;
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  will-change: transform, opacity;
+  backdrop-filter: blur(1px);
+}
+
 /* Accent line animation */
 .accent-line {
   height: 2px;
